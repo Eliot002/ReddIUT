@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block body_content %}
+    <div class="col p-4 d-flex flex-column position-static bg-light rounded">
+    <h1>Register</h1>
+    <br>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-secondary">Register</button>
+        </form>
+
+</div>
+{% endblock %}

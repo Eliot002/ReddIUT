@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Edit profile{% endblock %}
+{% block body_content %}
+    <div class="col p-4 d-flex flex-column position-static bg-light rounded">
+    <h1>Edit profile</h1>
+    <br>
+        <form method="post">
+            {% csrf_token %}
+               {{ form.as_p }}
+            <a href="{% url "change_password" %}">Click to change your password</a>
+            <br>
+            <br>
+            <button class="btn btn-secondary">Update profile</button>
+        </form>
+    </div>
+{% endblock %}

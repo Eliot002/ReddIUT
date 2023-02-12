@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body_content %}
+    <div class="col p-4 d-flex flex-column position-static bg-light rounded">
+        <h1>User Profile</h1>
+        <hr>
+
+        <p><i class="fa-solid fa-user"></i> Username: {{ user.username }}</p>
+        <p><i class="fa-solid fa-pen"></i> Bio: {{ profile.bio }}</p>
+        <p><i class="fa-solid fa-envelope"></i> Email: {{ user.email }}</p>
+        <p><i class="fa-solid fa-globe"></i> Website: <a href="{{ profile.website_url }}">{{ profile.website_url }}</a></p>
+        <p><i class="fa-brands fa-twitter"></i> Twitter: <a href="{{ profile.twitter_url }}">{{ profile.twitter_url }}</a></p>
+        {% comment %}    <p>First Name: {{ user.first_name }}</p>
+    <p>Last Name: {{ user.last_name }}</p>
+    <p>Is Active: {{ user.is_active }}</p>
+    <p>Is Staff: {{ user.is_staff }}</p>
+    <p>Is Superuser: {{ user.is_superuser }}</p>{% endcomment %}
+        <p><i class="fa-regular fa-clock"></i> Last Login: {{ user.last_login }}</p>
+        <p><i class="fa-solid fa-calendar-days"></i> Date Joined: {{ user.date_joined }}</p>
+
+    </div>
+{% endblock %}

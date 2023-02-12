@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Create profile{% endblock %}
+{% block body_content %}
+    <div class="col p-4 d-flex flex-column position-static bg-light rounded">
+        {% if user.is_authenticated %}
+            <h1>Create profile</h1>
+            <br>
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+                <button class="btn btn-secondary">Create profile page</button>
+            </form>
+
+        {% else %}
+            Tu n'as pas le droit d'être là et tu le sais très bien!
+        {% endif %}
+    </div>
+{% endblock %}

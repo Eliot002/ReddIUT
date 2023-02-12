@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block body_content %}
+
+    <br>
+    <div class="container">
+        {% for post in object_list %}
+            <div class="col-md-10">
+                <div class="row col-rg-10 border rounded overflow-hidden flex-md-row mb- shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static bg-light">
+                        <h3><a class="link-dark" href="{% url 'article-detail' post.pk %}">{{ post.title }}</a></h3>
+                        <div class="mb-1 text-muted">Posted by: {{ post.author }}</div>
+
+                        <div class="mb-1 text-muted">Date: {{ post.post_date }}</div>
+                        <strong class="d-inline-block mb-2 text-primary"><a href="{%  url 'category' post.category|slugify %}"> r/{{ post.category }}</a></strong>
+                        <hr>
+                        <p class="card-text mb-auto">{{ post.body|safe }}</p>
+
+                        {% if post.header_image %}
+                            <div class="col-auto d-none d-lg-block">
+                                <img width="200px" height="auto" src="{{ post.header_image.url }}">
+                            </div>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            {% if user.id == post.author.id %}
+                                <hr>
+                                <small>
+                                    <a href="{% url 'update_post' post.pk %}" style="margin-right: 5px;">
+                                        <i class="fa-sharp fa-solid fa-pen" style="margin-right: 5px;"></i>Edit
+                                    </a>
+                                    <a href="{% url 'delete_post' post.pk %}">
+                                        <i class="fa-sharp fa-solid fa-trash" style="margin-right: 5px;"></i>Delete
+                                    </a>
+                                </small>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+    </div>
+{% endblock %}

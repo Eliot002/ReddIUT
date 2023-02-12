@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Create a New Category!{% endblock %}
+{% block body_content %}
+    {% if user.is_authenticated %}
+        <div class="col p-4 d-flex flex-column position-static bg-light rounded">
+        <h1>Add Category</h1>
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-secondary">Add Category</button>
+        </form>
+    {% else %}
+        You have no right to be there!
+    {% endif %}
+</div>
+
+{% endblock %}
